@@ -1,0 +1,18 @@
+Class a::A
+{
+  name : String[1];
+  test : Integer[1];
+  other: String[*];
+}
+
+###Relational
+Database a::DB
+(
+  Table tb(name VARCHAR(200))
+)
+
+###Text
+Text a::Z
+{
+  content : 'Test wqewqqweessage';
+}
