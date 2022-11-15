@@ -41,7 +41,6 @@ jobs:
         run: |
           git config --global user.email "37706051+finos-admin@users.noreply.github.com"
           git config --global user.name "FINOS Administrator"
-
       - name: Set up Maven Central
         uses: actions/setup-java@v2
         with:
@@ -54,4 +53,4 @@ jobs:
           gpg-passphrase: CI_GPG_PASSPHRASE
 
       - name: Close staging repo
-        run: mvn nexus-staging:close
+        run: mvn nexus-staging:rc-list
