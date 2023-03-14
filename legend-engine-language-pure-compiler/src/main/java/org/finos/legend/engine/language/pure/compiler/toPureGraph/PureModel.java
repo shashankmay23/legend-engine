@@ -71,11 +71,11 @@ import org.finos.legend.pure.m3.coreinstance.meta.pure.metamodel.valuespecificat
 import org.finos.legend.pure.m3.coreinstance.meta.pure.store.Store;
 import org.finos.legend.pure.m3.navigation.M3Paths;
 import org.finos.legend.pure.m3.navigation.PackageableElement.PackageableElement;
-import org.finos.legend.pure.m3.serialization.filesystem.PureCodeStorage;
 import org.finos.legend.pure.m3.serialization.filesystem.repository.CodeRepository;
 import org.finos.legend.pure.m3.serialization.filesystem.repository.CodeRepositoryProviderHelper;
 import org.finos.legend.pure.m3.serialization.filesystem.repository.SVNCodeRepository;
 import org.finos.legend.pure.m3.serialization.filesystem.usercodestorage.classpath.VersionControlledClassLoaderCodeStorage;
+import org.finos.legend.pure.m3.serialization.filesystem.usercodestorage.composite.CompositeCodeStorage;
 import org.finos.legend.pure.m4.ModelRepository;
 import org.finos.legend.pure.runtime.java.compiled.compiler.JavaCompilerState;
 import org.finos.legend.pure.runtime.java.compiled.execution.CompiledExecutionSupport;
@@ -167,7 +167,7 @@ public class PureModel implements IPureModel
                     new JavaCompilerState(null, classLoader),
                     new CompiledProcessorSupport(classLoader, metaData == null ? new MetadataWrapper(this.root, METADATA_LAZY, this) : metaData, Sets.mutable.empty()),
                     null,
-                    new PureCodeStorage(null, new VersionControlledClassLoaderCodeStorage(classLoader, Lists.mutable.of(
+                    new CompositeCodeStorage(new VersionControlledClassLoaderCodeStorage(classLoader, Lists.mutable.of(
                             CodeRepositoryProviderHelper.findPlatformCodeRepository(),
                             SVNCodeRepository.newSystemCodeRepository()
                     ), null)),
